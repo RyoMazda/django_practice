@@ -4,29 +4,25 @@
 ## コマンドメモ
 ```bash
 docker-compose build
-docker-compose up
 docker-compose run --rm --service-ports web bash
 ```
 
 ```bash
-python manage.py runserver 0:8000
-# サーバーが走る
+python manage.py createsuperuser
+# admin登録
+
+python manage.py check
+
+python manage.py test polls
+# test
+
+python manage.py makemigrations
+# migration fileが生成される
 
 python manage.py migrate
 
-python manage.py makemigrations pollls
-# migration fileが生成される
-
-python manage.py sqlmigrate polls 0001
-# migration fileのdry run的な
-
-python manage.py check
-```
-
-
-## テスト
-```bash
-docker-compose run --rm web python manage.py test polls
+python manage.py runserver 0:8000
+# サーバーが走る
 ```
 
 
@@ -47,20 +43,3 @@ q.save()
 q.id  # できてる
 Question.objects.all()
 ```
-
-
-## モデル変更の手続き
-- Change your models (in models.py).
-- Run `python manage.py makemigrations` to create migrations for those changes
-- Run `python manage.py migrate` to apply those changes to the database.
-
-
-## アドミン登録
-```bash
-python manage.py createsuperuser
->>> Username: admin
->>> Email address: admin@example.com
->>> Password: ****
->>> Password (again): ****
-```
-

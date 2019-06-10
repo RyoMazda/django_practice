@@ -5,6 +5,7 @@ from .models import Question, Choice
 
 
 def index(request):
+    print('pigimaru')
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {
         'latest_question_list': latest_question_list,
