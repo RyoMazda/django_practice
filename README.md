@@ -21,8 +21,14 @@ python manage.py sqlmigrate polls 0001
 # migration fileのdry run的な
 
 python manage.py check
-
 ```
+
+
+## テスト
+```bash
+docker-compose run --rm web python manage.py test polls
+```
+
 
 ## モデルと戯れる
 ```bash
@@ -42,10 +48,12 @@ q.id  # できてる
 Question.objects.all()
 ```
 
+
 ## モデル変更の手続き
 - Change your models (in models.py).
 - Run `python manage.py makemigrations` to create migrations for those changes
 - Run `python manage.py migrate` to apply those changes to the database.
+
 
 ## アドミン登録
 ```bash
@@ -54,5 +62,5 @@ python manage.py createsuperuser
 >>> Email address: admin@example.com
 >>> Password: ****
 >>> Password (again): ****
-
 ```
+
