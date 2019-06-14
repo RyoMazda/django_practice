@@ -7,6 +7,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-RUN mkdir /work
-WORKDIR /work
+RUN mkdir /django_project
+WORKDIR /django_project
 EXPOSE 8000

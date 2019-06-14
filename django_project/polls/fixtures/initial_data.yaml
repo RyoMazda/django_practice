@@ -1,0 +1,28 @@
+- model: polls.Question
+  pk: 1
+  fields:
+    question_text: "Who are you?"
+    pub_date: "1990-07-19T12:00:00+09:00"
+- model: polls.Question
+  pk: 2
+  fields:
+    question_text: "What's pigimaru?"
+    pub_date: "2019-06-10T12:00:00+09:00"
+- model: polls.Choice
+  pk: 1
+  fields:
+    question: 1
+    choice_text: Jhon
+    votes: 10
+- model: polls.Choice
+  pk: 2
+  fields:
+    question: 1
+    choice_text: Jack
+    votes: 3
+- model: polls.Choice
+  pk: 3
+  fields:
+    question: 2
+    choice_text: "It's up to you."
+    votes: 9999999
