@@ -12,7 +12,7 @@
   pk: 3
   fields:
     question_text: "Is Japan over?"
-    pub_date: "2019-06-16T14:30:00+09:00"
+    pub_date: "2019-06-15T14:30:00+09:00"
 - model: polls.Choice
   pk: 1
   fields:

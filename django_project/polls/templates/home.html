@@ -1,0 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/my_style.css' %}">
+
+<h1>Welcome!</h1>
+
+<ul>
+    <li>
+        <a href="{% url 'home' %}">Home</a>
+    </li>
+    <li>
+        <a href="{% url 'polls:index' %}">Polls App</a>
+    </li>
+    <li>
+        <a href="{% url 'admin:index' %}">Admin page</a>
+    </li>
+</ul>

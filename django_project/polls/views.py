@@ -33,7 +33,7 @@ class IndexView(generic.ListView):
     model = Question
     queryset = Question.objects.filter(pub_date__lte=timezone.now())
     ordering = '-pub_date'
-    paginate_by = 1
+    paginate_by = 2
 
 
 # ------------------
