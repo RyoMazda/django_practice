@@ -28,7 +28,7 @@ python manage.py runserver 0:8000
 
 ## モデルと戯れる
 ```bash
-python manage.py shell
+docker-compose run --rm web python manage.py shell
 ```
 
 ```python
@@ -42,4 +42,17 @@ q.id  # まだない
 q.save()
 q.id  # できてる
 Question.objects.all()
+```
+
+テスト環境
+```python
+from django.test.utils import setup_test_environment
+setup_test_environment()
+
+from django.test import Client
+client = Client()
+
+from django.urls import reverse
+response = client.get(reverse('polls:index'))
+response.status_cod
 ```

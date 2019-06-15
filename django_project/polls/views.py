@@ -1,9 +1,15 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, reverse
+from django.utils import timezone
+from django.views import generic
 
 from .models import Question, Choice
 
 
+# ------------------
+# List
+# ------------------
+"""
 def index(request):
     print('pigimaru')
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
@@ -13,14 +19,48 @@ def index(request):
     return render(request, 'polls/index.html', context)
 
 
+class IndexView(generic.ListView):
+    # template_name = 'polls/index.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        '''Return the last five published questions.'''
+        return Question.objects.order_by('-pub_date')[:5]
+"""
+
+
+class IndexView(generic.ListView):
+    model = Question
+    queryset = Question.objects.filter(pub_date__lte=timezone.now())
+    ordering = '-pub_date'
+    paginate_by = 1
+
+
+# ------------------
+# Detail
+# ------------------
+"""
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/detail.html', {'question': question})
+"""
 
 
+class DetailView(generic.DetailView):
+    template_name = 'polls/detail.html'
+    queryset = Question.objects.filter(pub_date__lte=timezone.now())
+
+
+"""
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
+"""
+
+
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = 'polls/results.html'
 
 
 def vote(request, question_id):
